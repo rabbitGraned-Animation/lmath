@@ -3,6 +3,9 @@
 > This repository is presented as a public demonstration.
 > Does not provide any guarantees.
 
+![Version](https://img.shields.io/badge/Latest_Stable-0.4.1_public.2-blue)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/rabbitGraned-Animation/lmath/tests.yml)
+
 # lmath-dev
 
 «lmath» is a lightweight C++ library of vectors, matrix, quats, and other math operations for computer graphics.
@@ -44,4 +47,4 @@ Keep the contracts and avoid undefined behaviour. More detailed: [C&UB](https://
 
 ## License
 
-BSD 3-Clause License. Copyright © rabbitGraned Animation.
+BSD 3-Clause License. Copyright © rabbitGraned Animation
