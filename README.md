@@ -18,7 +18,7 @@ The library provides minimal abstraction without hidden allocations, is optimize
 
 ### Requirements:
 
-- C++20 STL implementation
+- C++20 compiler
 - CMake 3.14 (for build tests)
 
 > The tests were debugged using LLVM-based compilers.
