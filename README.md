@@ -6,7 +6,7 @@
 ![Version](https://img.shields.io/badge/Latest_Stable-0.4.1_public.2-blue)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/rabbitGraned-Animation/lmath/tests.yml)
 
-# lmath-dev
+# lmath
 
 «lmath» is a lightweight C++ library of vectors, matrix, quats, and other math operations for computer graphics.
 
