@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        compiler: [gcc, clang, msvc]
+        exclude:
+          - os: windows-latest
+            compiler: gcc
+          - os: windows-latest
+            compiler: clang
+          - os: ubuntu-latest
+            compiler: msvc
+          - os: macos-latest
+            compiler: msvc
+
+    env:
+      CXX_COMPILER: ${{ matrix.compiler == 'gcc' && 'g++' || 
+                       matrix.compiler == 'clang' && 'clang++' || 
+                       'cl' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt update
+          sudo apt install -y cmake g++ clang
+
+      - name: Setup tools (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install cmake
+
+      - name: Setup MSVC environment
+        if: matrix.compiler == 'msvc'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configure CMake
+        shell: bash
+        run: |
+          if [[ "${{ matrix.compiler }}" == "msvc" ]]; then
+            cmake -B build -DCMAKE_BUILD_TYPE=Release
+          else
+            cmake -B build \
+                  -DCMAKE_BUILD_TYPE=Release \
+                  -DCMAKE_CXX_COMPILER=${CXX_COMPILER}
+          fi
+
+      - name: Build tests
+        run: cmake --build build --config Release
+
+      - name: Run tests
+        working-directory: build
+        run: ctest --output-on-failure -C Release
