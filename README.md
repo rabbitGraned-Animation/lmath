@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> The «lmath» library is under development.
+> This repository is presented as a public demonstration.
+> Does not provide any guarantees.
+
 # lmath-dev
 
 «lmath» is a lightweight C++ library of vectors, matrix, quats, and other math operations for computer graphics.
