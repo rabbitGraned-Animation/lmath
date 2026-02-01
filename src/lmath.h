@@ -1,6 +1,8 @@
 /*
-* "lmath" is 
-* 
+* lmath library
+* License: BSD 3-Clause License
+*
+* Copyright "rabbitGraned Animation"
 */
 
 #pragma once
